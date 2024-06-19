@@ -99,7 +99,7 @@ kubectl port-forward svc/kube-prometheus-stack-prometheus -n monitoring 4001:909
 - Now we can login to http://localhost:4000 (The default username/password for Grafana is `admin/prom-operator`)
   ![grafana-login-ok](assets/grafana-login-ok.png)
 
-## 5.3. Explore the Grafana
+### 5.3. Explore the Grafana
 
 - Choose your dashboard
   ![choosing-dashboard](assets/choosing-dashboard.png)
