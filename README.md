@@ -100,5 +100,15 @@ kubectl port-forward svc/kube-prometheus-stack-grafana -n monitoring 4000:80
 kubectl port-forward svc/kube-prometheus-stack-prometheus -n monitoring 4001:9090
 ```
 
-Now we can login to http://localhost:4000 (The default username/password for Grafana is `admin/prom-operator`)
-![grafana-login-ok](assets/grafana-login-ok.png)
+- Now we can login to http://localhost:4000 (The default username/password for Grafana is `admin/prom-operator`)
+  ![grafana-login-ok](assets/grafana-login-ok.png)
+
+## Explore the Grafana
+
+- Choose your dashboard
+  ![choosing-dashboard](assets/choosing-dashboard.png)
+
+- Select the namespace
+  ![dashboard-resource-pod](assets/dashboard-resource-pod.png)
+
+- Keep exploring the dashboard your way to see the metrics stats of our application on Kubernetes
