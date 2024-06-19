@@ -37,7 +37,7 @@ kubectl apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/microserv
 
 ## 3. Deploy Nginx proxy
 
-Deploy the Nginx proxy prior to `fontend` service
+Deploy the Nginx proxy prior to `fontend` service, using [manifest/nginx](./manifest/nginx/nginx.yaml)
 
 ```bash
 kubectl apply -f manifest/nginx/nginx.yaml -n demoapp
