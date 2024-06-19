@@ -26,6 +26,8 @@ kubectl get ns
 
 ## 2. Deploy the application
 
+In this project we use the sample microservices application from [GoogleCloudPlatform/microservices-demo](https://github.com/GoogleCloudPlatform/microservices-demo)
+
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/microservices-demo/main/release/kubernetes-manifests.yaml -n demoapp
 # To debug, run: kubectl get services -n  demoapp
@@ -57,13 +59,7 @@ Now visit http://localhost:8090/ to access your application locally:
 
 In section #4 we've successfully deploy our microservices application on k8s, deploy the Nginx proxy infont of the fontend app. Now let's monitor our application with Prometheus + Grafana
 
-### Document
-
-- https://artifacthub.io
-- https://prometheus-community.github.io/helm-charts
-- https://helm.sh/docs/
-
-### Deploy Prometheus/Grafana stack
+### 5.1. Deploy Prometheus/Grafana stack
 
 <!-- ![prometheus-architecture](assets/prometheus-architecture.png) -->
 
@@ -86,7 +82,7 @@ kubectl --namespace monitoring get pods -l "release=kube-prometheus-stack"
 kubectl --namespace monitoring get all
 ```
 
-### Access the dashboard
+### 5.2. Access the dashboard
 
 - Expose Grafana
 
@@ -103,7 +99,7 @@ kubectl port-forward svc/kube-prometheus-stack-prometheus -n monitoring 4001:909
 - Now we can login to http://localhost:4000 (The default username/password for Grafana is `admin/prom-operator`)
   ![grafana-login-ok](assets/grafana-login-ok.png)
 
-## Explore the Grafana
+## 5.3. Explore the Grafana
 
 - Choose your dashboard
   ![choosing-dashboard](assets/choosing-dashboard.png)
@@ -112,3 +108,11 @@ kubectl port-forward svc/kube-prometheus-stack-prometheus -n monitoring 4001:909
   ![dashboard-resource-pod](assets/dashboard-resource-pod.png)
 
 - Keep exploring the dashboard your way to see the metrics stats of our application on Kubernetes
+
+## Reference
+
+- https://artifacthub.io
+- https://prometheus-community.github.io/helm-charts
+- https://helm.sh/docs/
+- https://github.com/GoogleCloudPlatform/microservices-demo
+- https://nginx.org/en/docs/
