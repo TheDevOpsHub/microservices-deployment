@@ -2,7 +2,7 @@
 
 Sample microservices deployment on k8s with reverse proxy, monitoring, logging features...
 
-## Stack
+## Introduction
 
 In this project you'll use following tools and applications:
 
