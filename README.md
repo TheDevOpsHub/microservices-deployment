@@ -6,9 +6,11 @@ Sample microservices deployment on k8s with reverse proxy, monitoring, logging f
 
 In this project you'll use following tools and applications:
 
-- K8s/Helm
+- K8s
+- Helm
 - Prometheus + Grafana
 - Nginx
+- 10+ microservices
 
 Now let's start the journey!
 
