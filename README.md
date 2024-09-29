@@ -149,6 +149,16 @@ kubectl port-forward svc/kube-prometheus-stack-prometheus -n monitoring 4001:909
 - Visit the k8s dashboard (https://localhost:8443/), login and choose the `demoapp` namespace, you can see the workload and k8s object (deployment, pod, sevice, ...) statuses:
   ![](.//assets/k8s-dashboard-ok.png)
 
+## Cleanup!
+In case you want to cleanup the resources:
+```bash
+# Cleanup application
+kubectl delete namespace demoapp
+
+# Cleanup other namespace
+kubectl delete namespace <namespace_name>
+```
+
 ## Reference
 
 - https://artifacthub.io
