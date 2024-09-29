@@ -26,7 +26,39 @@ kubectl create ns demoapp
 kubectl get ns
 ```
 
-## 2. Deploy the application
+## 2. Deploy K8s dashboard
+
+- Docs:
+
+  - https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
+  - https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
+
+- Deploy dashboard
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+
+# Check/Verify
+kubectl get all -n kubernetes-dashboard
+```
+
+- Forward port so we can access the dashboard
+
+```bash
+# Note: You can also replace 8443 to the working PORT in your PC
+kubectl port-forward service/kubernetes-dashboard -n kubernetes-dashboard 8443:443
+```
+
+- Create admin user
+
+```bash
+kubectl apply -f manifest/k8s-dashboard-user/admin.yaml
+```
+
+- Access the dashboard at: https://localhost:8443/, then you can use token to login to dashboard
+- You can get the token to access dashboard via: `kubectl get secret admin-user -n kubernetes-dashboard -o jsonpath={".data.token"} | base64 -d`
+
+## 3. Deploy the application
 
 In this project we use the sample microservices application from [GoogleCloudPlatform/microservices-demo](https://github.com/GoogleCloudPlatform/microservices-demo)
 
@@ -35,7 +67,7 @@ kubectl apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/microserv
 # To debug, run: kubectl get services -n  demoapp
 ```
 
-## 3. Deploy Nginx proxy
+## 4. Deploy Nginx proxy
 
 Deploy the Nginx proxy prior to `fontend` service, using [manifest/nginx](./manifest/nginx/nginx.yaml)
 
@@ -44,7 +76,7 @@ kubectl apply -f manifest/nginx/nginx.yaml -n demoapp
 # To debug, run: kubectl get services -n  demoapp
 ```
 
-## 4. Expose Nginx service
+## 5. Expose Nginx service
 
 Open another terminal and run:
 
@@ -57,11 +89,11 @@ Now visit http://localhost:8090/ to access your application locally:
 
 ![nginx-ok](assets/nginx-ok.png)
 
-## 5. Prometheus + Grafana
+## 6. Prometheus + Grafana
 
 In section #4 we've successfully deploy our microservices application on k8s, deploy the Nginx proxy infont of the fontend app. Now let's monitor our application with Prometheus + Grafana
 
-### 5.1. Deploy Prometheus/Grafana stack
+### 6.1. Deploy Prometheus/Grafana stack
 
 <!-- ![prometheus-architecture](assets/prometheus-architecture.png) -->
 
@@ -84,7 +116,7 @@ kubectl --namespace monitoring get pods -l "release=kube-prometheus-stack"
 kubectl --namespace monitoring get all
 ```
 
-### 5.2. Access the dashboard
+### 6.2. Access the dashboard
 
 - Expose Grafana
 
@@ -101,7 +133,7 @@ kubectl port-forward svc/kube-prometheus-stack-prometheus -n monitoring 4001:909
 - Now we can login to http://localhost:4000 (The default username/password for Grafana is `admin/prom-operator`)
   ![grafana-login-ok](assets/grafana-login-ok.png)
 
-### 5.3. Explore the Grafana
+### 6.3. Explore the Grafana
 
 - Choose your dashboard
   ![choosing-dashboard](assets/choosing-dashboard.png)
