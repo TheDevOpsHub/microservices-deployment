@@ -144,6 +144,11 @@ kubectl port-forward svc/kube-prometheus-stack-prometheus -n monitoring 4001:909
 
 - Keep exploring the dashboard your way to see the metrics stats of our application on Kubernetes
 
+## 7. Check K8s dashboard
+
+- Visit the k8s dashboard (https://localhost:8443/), login and choose the `demoapp` namespace, you can see the workload and k8s object (deployment, pod, sevice, ...) statuses:
+  ![](.//assets/k8s-dashboard-ok.png)
+
 ## Reference
 
 - https://artifacthub.io
