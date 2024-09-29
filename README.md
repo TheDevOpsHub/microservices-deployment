@@ -11,6 +11,7 @@ In this project you'll use following tools and applications:
 - Prometheus + Grafana
 - Nginx
 - 10+ microservices
+- K8s dashboard
 
 Now let's start the journey!
 
