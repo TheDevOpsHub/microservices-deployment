@@ -2,6 +2,8 @@
 
 Sample microservices deployment on k8s with reverse proxy, monitoring, logging features...
 
+<img height="28" src="https://skillicons.dev/icons?i=kubernetes" /> <img height="28" src="https://skillicons.dev/icons?i=prometheus" /> <img height="28" src="https://skillicons.dev/icons?i=nginx" /> <img height="28" src="https://helm.sh/img/helm.svg"> <img height="28" src="https://kubernetes.io/images/docs/ui-dashboard.png">
+
 ## Introduction
 
 In this project you'll use following tools and applications:
@@ -150,7 +152,9 @@ kubectl port-forward svc/kube-prometheus-stack-prometheus -n monitoring 4001:909
   ![](.//assets/k8s-dashboard-ok.png)
 
 ## Cleanup!
+
 In case you want to cleanup the resources:
+
 ```bash
 # Cleanup application
 kubectl delete namespace demoapp
